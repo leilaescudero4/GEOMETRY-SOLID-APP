@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>🌿 Geometry Engine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>🌿 Geometry Engine</h2>
+
+<select id="shape">
+    <option value="ellipsoid">Ellipsoid</option>
+    <option value="cone_dome">Cone + Dome</option>
+    <option value="terrain">Terrain</option>
+</select>
+
+<input id="a" placeholder="a (radius)">
+<input id="b" placeholder="b (radius)">
+<input id="h1" placeholder="h1 (height)">
+<input id="h2" placeholder="h2 (height)">
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="result"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
