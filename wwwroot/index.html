@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TerraMorph Dashboard</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<h2>🧠 TerraMorph Dashboard</h2>
+
+<div class="dashboard">
+
+    <div class="panel">
+        <h3>Inputs</h3>
+
+        <select id="shape">
+            <option value="ellipsoid">Ellipsoid</option>
+            <option value="cone_dome">Cone + Dome</option>
+            <option value="terrain">Terrain</option>
+        </select>
+
+        <input id="a" placeholder="a">
+        <input id="b" placeholder="b">
+        <input id="h1" placeholder="h1">
+        <input id="h2" placeholder="h2">
+
+        <button onclick="calculate()">Run</button>
+        <button onclick="clearAll()">Clear</button>
+    </div>
+
+    <div class="panel">
+        <h3>3D View</h3>
+        <canvas id="scene"></canvas>
+    </div>
+
+    <div class="panel">
+        <h3>Result</h3>
+        <div id="result">Waiting...</div>
+
+        <h3>Graph</h3>
+        <canvas id="volumeChart"></canvas>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
+
