@@ -18,6 +18,9 @@
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/scopedcss/bundle/GEOMETRY-SOLID-APP.styles.css
+/workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/compressed/74ckyvkgfi-{0}-677lz6d9ka-677lz6d9ka.gz
+/workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/compressed/n1pwqac1me-{0}-wk23w4108r-wk23w4108r.gz
+/workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/compressed/llhlke56wl-{0}-klbjar5m0o-klbjar5m0o.gz
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/staticwebassets.build.json
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/staticwebassets.build.json.cache
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/staticwebassets.development.json
@@ -28,6 +31,3 @@
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/GEOMETRY-SOLID-APP.pdb
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/GEOMETRY-SOLID-APP.genruntimeconfig.cache
 /workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/ref/GEOMETRY-SOLID-APP.dll
-/workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/compressed/74ckyvkgfi-{0}-6nywl7s5ro-6nywl7s5ro.gz
-/workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/compressed/n1pwqac1me-{0}-8b1lftze15-8b1lftze15.gz
-/workspaces/GEOMETRY-SOLID-APP/obj/Debug/net10.0/compressed/llhlke56wl-{0}-zgf3vrby3d-zgf3vrby3d.gz
