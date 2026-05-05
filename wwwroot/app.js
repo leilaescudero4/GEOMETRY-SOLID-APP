@@ -1,133 +1,61 @@
-let scene, camera, renderer, mesh;
 let chart;
 
-// -------- 3D INIT --------
-function init3D() {
+function calculate() {
 
-    scene = new THREE.Scene();
+    let initial = parseFloat(document.getElementById("initial").value);
+    let finalV = parseFloat(document.getElementById("final").value);
+    let mass = parseFloat(document.getElementById("mass").value);
+    let distance = parseFloat(document.getElementById("distance").value);
+    let angle = parseFloat(document.getElementById("angle").value);
 
-    camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
-
-    renderer = new THREE.WebGLRenderer({
-        canvas: document.getElementById("scene")
-    });
-
-    renderer.setSize(300, 300);
-    camera.position.z = 5;
-
-    let light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 5, 5);
-    scene.add(light);
-
-    animate();
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    if (mesh) {
-        mesh.rotation.x += 0.01;
-        mesh.rotation.y += 0.01;
+    if (isNaN(initial) || isNaN(finalV) || isNaN(mass) || isNaN(distance) || isNaN(angle)) {
+        alert("Please fill in all fields correctly.");
+        return;
     }
 
-    renderer.render(scene, camera);
-}
+    // 🌊 Volume (irregular solid)
+    let volume = finalV - initial;
 
-// -------- CREATE SHAPE --------
-function createShape(type) {
+    // ⚖️ Density
+    let density = mass / volume;
 
-    if (mesh) scene.remove(mesh);
+    // 📐 Trigonometry (height estimation)
+    let radians = angle * Math.PI / 180;
+    let height = distance * Math.tan(radians);
 
-    let geometry;
+    document.getElementById("results").innerHTML = `
+        <h2>Results</h2>
+        <p>Volume: ${volume.toFixed(2)} mL</p>
+        <p>Density: ${density.toFixed(2)} g/mL</p>
+        <p>Estimated Height: ${height.toFixed(2)} cm</p>
+    `;
 
-    if (type === "ellipsoid") {
-        geometry = new THREE.SphereGeometry(1, 32, 32);
-        geometry.scale(1, 0.7, 1.2);
-    }
-
-    else if (type === "cone_dome") {
-        geometry = new THREE.ConeGeometry(1, 2, 32);
-    }
-
-    else {
-        geometry = new THREE.PlaneGeometry(4, 4, 32, 32);
-
-        let pos = geometry.attributes.position;
-
-        for (let i = 0; i < pos.count; i++) {
-            pos.setZ(i, Math.random());
-        }
-
-        geometry.rotateX(-Math.PI / 2);
-    }
-
-    mesh = new THREE.Mesh(
-        geometry,
-        new THREE.MeshStandardMaterial({ color: 0x00e676 })
-    );
-
-    scene.add(mesh);
-}
-
-// -------- CALCULATE --------
-async function calculate() {
-
-    let shape = document.getElementById("shape").value;
-
-    let data = {
-        shape: shape,
-        a: Number(document.getElementById("a").value),
-        b: Number(document.getElementById("b").value),
-        h1: Number(document.getElementById("h1").value),
-        h2: Number(document.getElementById("h2").value)
-    };
-
-    createShape(shape);
-
-    let res = await fetch("/calculate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-    });
-
-    let json = await res.json();
-
-    document.getElementById("result").innerHTML =
-        "Volume: " + json.volume.toFixed(2);
-
-    updateGraph(shape, json.volume);
-}
-
-// -------- GRAPH --------
-function updateGraph(shape, value) {
-
-    let values = [0, 0, 0];
-
-    if (shape === "ellipsoid") values[0] = value;
-    if (shape === "cone_dome") values[1] = value;
-    if (shape === "terrain") values[2] = value;
+    // 📊 GRAPH
+    let ctx = document.getElementById("chart").getContext("2d");
 
     if (chart) chart.destroy();
 
-    chart = new Chart(document.getElementById("volumeChart"), {
+    chart = new Chart(ctx, {
         type: "bar",
         data: {
-            labels: ["Ellipsoid","Cone+Dome","Terrain"],
+            labels: ["Volume", "Density", "Height"],
             datasets: [{
-                label: "Volume",
-                data: values
+                label: "Crystal Analysis",
+                data: [volume, density, height],
+                backgroundColor: ["#38bdf8", "#22c55e", "#f59e0b"]
             }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: { color: "white" }
+                }
+            },
+            scales: {
+                x: { ticks: { color: "white" } },
+                y: { ticks: { color: "white" } }
+            }
         }
     });
 }
-
-// -------- CLEAR --------
-function clearAll() {
-    ["a","b","h1","h2"].forEach(id => document.getElementById(id).value = "");
-    document.getElementById("result").innerHTML = "Waiting...";
-}
-
-// -------- INIT --------
-window.onload = function () {
-    init3D();
-};

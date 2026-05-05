@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>TerraMorph Dashboard</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>TerraMorph Crystal Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-<h2>🧠 TerraMorph Dashboard</h2>
+<h1> TerraMorph: Natural Crystal Analyzer</h1>
 
-<div class="dashboard">
+<div class="container">
 
-    <div class="panel">
-        <h3>Inputs</h3>
-
-        <select id="shape">
-            <option value="ellipsoid">Ellipsoid</option>
-            <option value="cone_dome">Cone + Dome</option>
-            <option value="terrain">Terrain</option>
-        </select>
-
-        <input id="a" placeholder="a">
-        <input id="b" placeholder="b">
-        <input id="h1" placeholder="h1">
-        <input id="h2" placeholder="h2">
-
-        <button onclick="calculate()">Run</button>
-        <button onclick="clearAll()">Clear</button>
+    <div class="card">
+        <h3> Water Displacement</h3>
+        <input id="initial" type="number" placeholder="Initial Volume (mL)">
+        <input id="final" type="number" placeholder="Final Volume (mL)">
     </div>
 
-    <div class="panel">
-        <h3>3D View</h3>
-        <canvas id="scene"></canvas>
+    <div class="card">
+        <h3>⚖️ Mass</h3>
+        <input id="mass" type="number" placeholder="Mass (g)">
     </div>
 
-    <div class="panel">
-        <h3>Result</h3>
-        <div id="result">Waiting...</div>
-
-        <h3>Graph</h3>
-        <canvas id="volumeChart"></canvas>
+    <div class="card">
+        <h3> Trigonometry</h3>
+        <input id="distance" type="number" placeholder="Distance (cm)">
+        <input id="angle" type="number" placeholder="Angle (degrees)">
     </div>
 
 </div>
 
-<script src="app.js"></script>
+<button onclick="calculate()">Calculate</button>
+
+<div id="results"></div>
+
+<canvas id="chart"></canvas>
+
+<script src="script.js"></script>
 
 </body>
 </html>
