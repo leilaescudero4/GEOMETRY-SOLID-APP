@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GEOMETRY-SOLID-APP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bfc5f932a6fec3d3baaf3073f458e716f3bfbfd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbed92a5c82c42f27be1398bf9009d3cebe2f0f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("GEOMETRY-SOLID-APP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GEOMETRY-SOLID-APP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
